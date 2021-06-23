@@ -33,20 +33,17 @@ var passwordGenerator = {
 
   /*setPasswordOptions prompts for password criteria include:length (8-128 characters), lowercase, uppercase, numeric, and/or special chars each input will be flagged as a boolean (or number for password length) to be included in the final password, store in an object */
   setPasswordOptions: function () {
-  //for length: prompt asking for number 8 to 128, alerts if <8 or >128 and ends program
-    passwordGenerator.passwordLength = prompt('Enter a password length between 8 to 128');
+  //Prompt asking for number 8 to 128, alerts if <8 or >128 and has user try again
+    while (passwordGenerator.passwordLength < 8 || passwordGenerator.passwordLength > 128) {
+      passwordGenerator.passwordLength = prompt('Enter a password length between 8 to 128');
       if (passwordGenerator.passwordLength < 8 || passwordGenerator.passwordLength > 128) {
         alert('Password must be between 8 to 128 characters, try again')
-        passwordGenerator.passwordLength = 0
-        
+      }
     }
-    //for lowercase: confirm prompt
+    //confirm prompts for lower, upper, numeric, and special
     passwordGenerator.isLower = confirm('Do you want lowercase characters in your password?');
-    //for uppercase: confirm prompt
     passwordGenerator.isUpper = confirm('Do you want uppercase characters in your password?');
-    //for numeric: confirm prompt
     passwordGenerator.isNumeric = confirm('Do you want numeric characters in your password?');
-    //for special chars: confirm prompt
     passwordGenerator.isSpecial = confirm('Do you want special characters in your password?');
   }
 }
