@@ -45,12 +45,24 @@ var passwordGenerator = {
     passwordGenerator.isUpper = confirm('Do you want uppercase characters in your password?');
     passwordGenerator.isNumeric = confirm('Do you want numeric characters in your password?');
     passwordGenerator.isSpecial = confirm('Do you want special characters in your password?');
+  },
+
+  //evaluate criteria booleans and concatenate into combined array
+  genCombinedArray: function () {
+    if (passwordGenerator.isLower) {
+      passwordGenerator.combinedArray = passwordGenerator.combinedArray.concat(passwordGenerator.lowerArray)
+    };
+    if (passwordGenerator.isUpper) {
+      passwordGenerator.combinedArray = passwordGenerator.combinedArray.concat(passwordGenerator.upperArray)
+    };
+    if (passwordGenerator.isNumeric) {
+      passwordGenerator.combinedArray = passwordGenerator.combinedArray.concat(passwordGenerator.numericArray)
+    };
+    if (passwordGenerator.isSpecial) {
+      passwordGenerator.combinedArray = passwordGenerator.combinedArray.concat(passwordGenerator.specialArray)
+    };
   }
 }
-
-function setPasswordOptions () {
-
-
 }
 
 //generatePassword will generate a password based off user's criteria
