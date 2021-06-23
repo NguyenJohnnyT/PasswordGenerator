@@ -27,7 +27,7 @@ var passwordGenerator = {
   //generateMyPassword calls on all the functions in the passwordGenerator object to give the user their password
   generateMyPassword: function () {
     setPasswordOptions() //1. ask the user their password criteria
-    someFunction() //2. update combinedArray based off user pw criteria
+    getCombinedArray() //2. update combinedArray based off user pw criteria
     someFunction2() //3. randomly select characters in combinedArray to push into newPassword
   },
 
@@ -61,8 +61,19 @@ var passwordGenerator = {
     if (passwordGenerator.isSpecial) {
       passwordGenerator.combinedArray = passwordGenerator.combinedArray.concat(passwordGenerator.specialArray)
     };
+    console.log(passwordgenerator.combinedArray);
+  },
+
+  /*Generate a new password using a random selection of characters from combinedArray and concatenate  to newPassword property.
+  The length of the password will be determined by passwordLength (a number), and the length of combinedArray will
+  help determine the index of combinedArray and be concatenated to the current string inside newPassword*/
+  newPasswordGen: function () {
+    for (i = 0; i < passwordgenerator.passwordLength; i++) {
+      var newCharIndex = Math.floor(Math.random() * passwordgenerator.combinedArray.length);
+      passwordGenerator.newPassword = passwordgenerator.newPassword.concat(passwordGenerator.combinedArray[newCharIndex]);
+      return passwordGenerator.newPassword
+    }
   }
-}
 }
 
 //generatePassword will generate a password based off user's criteria
