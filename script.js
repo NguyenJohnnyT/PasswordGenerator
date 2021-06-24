@@ -3,9 +3,9 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 
-//object that stores user preferences
+//object stores user preferences
 var passwordGenerator = {
-  //password options; declared and initialized as base
+  //password criteria
   passwordLength: 0,
   isLower: false,
   isUpper: false,
@@ -24,15 +24,19 @@ var passwordGenerator = {
   //declare variable newPassword to display generated password to the user 
   newPassword: '',
 
-  //generateMyPassword calls on all the functions in the passwordGenerator object to give the user their password
-  generateMyPassword: function () {
-    setPasswordOptions(); //1. ask the user their password criteria
-    genCombinedArray(); //2. update combinedArray based off user pw criteria
-    var showNewPassword = newPasswordGen(); //3. randomly select characters in combinedArray to push into newPassword
-    this.resetCriteria(); //4. reset criteria
-    return showNewPassword
+  writePassword: function () {
+    document.getElementById("password").innerHTML = this.generateAPassword();
   },
 
+  //generateAPassword calls on all the functions in the passwordGenerator object to give the user their password
+  generateAPassword: function () {
+    this.setPasswordOptions(); //1. ask the user their password criteria
+    this.genCombinedArray(); //2. update combinedArray based off user pw criteria
+    var showNewPassword = this.newPasswordGen(); //3. randomly select characters in combinedArray to push into newPassword
+    this.resetCriteria(); //4. resets criterias, combinedArray, and newPassword
+    return showNewPassword //5. returns user's password as a variable containing a string
+  },
+  
   /*setPasswordOptions prompts for password criteria include:length (8-128 characters), lowercase, uppercase, numeric, and/or special chars each input will be flagged as a boolean (or number for password length) to be included in the final password, store in an object */
   setPasswordOptions: function () {
   //Prompt asking for number 8 to 128, alerts if <8 or >128 and has user try again
@@ -85,24 +89,26 @@ var passwordGenerator = {
     this.isUpper = false;
     this.isNumeric = false;
     this.isSpecial = false;
-  },
+    this.combinedArray = [];
+    this.newPassword = '';
+  }
 }
 
 //generatePassword will generate a password based off user's criteria
-function generatePassword () {
+// function generatePassword () {
 
-}
+// }
 
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
 
-  passwordText.value = password;
 
-}
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//   passwordText.value = password;
+
+// }
+
+// // Add event listener to generate button
+generateBtn.addEventListener("click", passwordGenerator.writePassword());
