@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+
 
 //object stores user preferences
 var passwordGenerator = {
@@ -24,6 +24,7 @@ var passwordGenerator = {
   //declare variable newPassword to display generated password to the user 
   newPassword: '',
 
+  // Write password to the #password input
   writePassword: function () {
     document.getElementById("password").innerHTML = this.generateAPassword();
   },
@@ -37,7 +38,7 @@ var passwordGenerator = {
     return showNewPassword //5. returns user's password as a variable containing a string
   },
   
-  /*setPasswordOptions prompts for password criteria include:length (8-128 characters), lowercase, uppercase, numeric, and/or special chars each input will be flagged as a boolean (or number for password length) to be included in the final password, store in an object */
+  /* setPasswordOptions prompts for password criteria include:length (8-128 characters), lowercase, uppercase, numeric, and/or special chars each input will be flagged as a boolean (or number for password length) to be included in the final password, store in an object */
   setPasswordOptions: function () {
   //Prompt asking for number 8 to 128, alerts if <8 or >128 and has user try again
     while (this.passwordLength < 8 || this.passwordLength > 128) {
@@ -47,11 +48,16 @@ var passwordGenerator = {
       }
     }
     //confirm prompts for lower, upper, numeric, and special
-
-    this.isLower = confirm('Do you want lowercase characters in your password?');
-    this.isUpper = confirm('Do you want uppercase characters in your password?');
-    this.isNumeric = confirm('Do you want numeric characters in your password?');
-    this.isSpecial = confirm('Do you want special characters in your password?');
+    while (true) { 
+      this.isLower = confirm('Do you want lowercase characters in your password?');
+      this.isUpper = confirm('Do you want uppercase characters in your password?');
+      this.isNumeric = confirm('Do you want numeric characters in your password?');
+      this.isSpecial = confirm('Do you want special characters in your password?');
+      if (this.isLower || this.isUpper || this.isNumeric || this.isSpecial) { //guarantees at least one criteria is chosen
+        break
+      }
+      alert('You must pick at least one criteria, try again')
+    }
   },
 
   //evaluate criteria booleans and concatenate into combined array
@@ -68,7 +74,7 @@ var passwordGenerator = {
     if (this.isSpecial) {
       this.combinedArray = this.combinedArray.concat(this.specialArray)
     };
-    console.log(this.combinedArray);
+    // console.log(this.combinedArray);
   },
 
   /*Generate a new password using a random selection of characters from combinedArray and concatenate  to newPassword property.
@@ -76,10 +82,12 @@ var passwordGenerator = {
   help determine the index of combinedArray and be concatenated to the current string inside newPassword*/
   newPasswordGen: function () {
     for (i = 0; i < this.passwordLength; i++) {
+      // console.log('password length: ' + this.passwordLength)
       var newCharIndex = Math.floor(Math.random() * this.combinedArray.length);
       this.newPassword = this.newPassword.concat(this.combinedArray[newCharIndex]);
-      return this.newPassword
+      // console.log(this.newPassword)
     }
+    return this.newPassword
   },
 
   //Resets the criteria so that the object.generatePassword can be called again
