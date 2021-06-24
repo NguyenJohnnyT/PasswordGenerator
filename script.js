@@ -25,10 +25,6 @@ const passwordGenerator = {
   // Write password to the #password input
   writePassword: function () {
     document.getElementById("password").innerHTML = this.generateAPassword();
-    // var restart = confirm('Would you like to try again?')
-    // if (restart) {
-    //   this.writePassword();
-    // } else {alert('Enjoy your new password!')}
   },
 
   //generateAPassword calls on all the functions in the passwordGenerator object to give the user their password
@@ -76,7 +72,6 @@ const passwordGenerator = {
     if (this.isSpecial) {
       this.combinedArray = this.combinedArray.concat(this.specialArray)
     };
-    // console.log(this.combinedArray);
   },
 
   /*Generate a new password using a random selection of characters from combinedArray and concatenate  to newPassword property.
@@ -84,10 +79,8 @@ const passwordGenerator = {
   help determine the index of combinedArray and be concatenated to the current string inside newPassword*/
   newPasswordGen: function () {
     for (i = 0; i < this.passwordLength; i++) {
-      // console.log('password length: ' + this.passwordLength)
       var newCharIndex = Math.floor(Math.random() * this.combinedArray.length);
       this.newPassword = this.newPassword.concat(this.combinedArray[newCharIndex]);
-      // console.log(this.newPassword)
     }
     return this.newPassword
   },
@@ -104,21 +97,4 @@ const passwordGenerator = {
   }
 }
 
-//generatePassword will generate a password based off user's criteria
-// function generatePassword () {
-
-// }
-
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-
-
-
-//   passwordText.value = password;
-
-// }
-
-// // Add event listener to generate button
-generateBtn.addEventListener("click", passwordGenerator.writePassword);
+// generateBtn.addEventListener("click", passwordGenerator.writePassword);
