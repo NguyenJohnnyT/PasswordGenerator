@@ -1,10 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-
-
 //object stores user preferences
-var passwordGenerator = {
+const passwordGenerator = {
   //password criteria
   passwordLength: 0,
   isLower: false,
@@ -12,21 +10,25 @@ var passwordGenerator = {
   isNumeric: false,
   isSpecial: false,
   
-  //character arrays for functions to refer to
+  //base character arrays for functions to refer to
   lowerArray: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
   upperArray: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
   numericArray: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   specialArray: [' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '&', '_', '`', '{', '|', '}', '~'],
 
-  //Array that concatenates previous arrays to be used for password generation
+  //Array that contains concatenated criteria arrays and used for password generation
   combinedArray: [],
 
-  //declare variable newPassword to display generated password to the user 
+  //a string of randomly generated, concatenated characters to display as password to the user 
   newPassword: '',
 
   // Write password to the #password input
   writePassword: function () {
     document.getElementById("password").innerHTML = this.generateAPassword();
+    // var restart = confirm('Would you like to try again?')
+    // if (restart) {
+    //   this.writePassword();
+    // } else {alert('Enjoy your new password!')}
   },
 
   //generateAPassword calls on all the functions in the passwordGenerator object to give the user their password
@@ -119,4 +121,4 @@ var passwordGenerator = {
 // }
 
 // // Add event listener to generate button
-generateBtn.addEventListener("click", passwordGenerator.writePassword());
+generateBtn.addEventListener("click", passwordGenerator.writePassword);
