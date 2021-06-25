@@ -25,17 +25,17 @@ Once the user successfully answers the prompts, the screen will show a password 
 Screenshots:\
 \
 Initial page:
-<img src="./assets/images/base_website.png" alt="base website" width="250"/>
+<img src="./assets/images/base_website.png" alt="base website" width="400"/>
 
-Length Prompt: <img src="./assets/images/length_prompt.png" alt="length prompt" width="250"/>
+Length Prompt: <img src="./assets/images/length_prompt.png" alt="length prompt" width="400"/>
 
-Error alert if unsatisfactory length condition used: <img src="./assets/images/error_prompt1.png" alt="error alert if unsatisfactory length" width="250"/>
+Error alert if unsatisfactory length condition used: <img src="./assets/images/error_prompt1.png" alt="error alert if unsatisfactory length" width="400"/>
 
-Lower case prompt: <img src="./assets/images/lowerCase_prompt.png" alt="lower case prompt" width="250"/>
+Lower case prompt: <img src="./assets/images/lowerCase_prompt.png" alt="lower case prompt" width="400"/>
 
-Error prompt if no criteria selected: <img src="./assets/images/error_prompt2.png" alt="error prompt if no criteria accepted" width="250"/>
+Error prompt if no criteria selected: <img src="./assets/images/error_prompt2.png" alt="error prompt if no criteria accepted" width="400"/>
 
-Example password with all criteria selected: <img src="./assets/images/20_all_char_example.png" alt="example password with all criteria selected" width="250"/>
+Example password with all criteria selected: <img src="./assets/images/20_all_char_example.png" alt="example password with all criteria selected" width="400"/>
 
 ## Credits
 
